@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".choosepoints.SetpointActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="500dp">
+
+        </com.baidu.mapapi.map.MapView>
+
+        <!--        单点显示区-->
+        <LinearLayout
+            android:id="@+id/show_ID"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="标定采样点："
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <RadioGroup
+                android:id="@+id/rg_simple"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_simple1"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_simple2"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/rb_simple3"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/rb_simple4"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/rb_simple5"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/rb_simple6"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="6"
+                    android:textSize="15sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!--        单点显示区-->
+        <LinearLayout
+            android:id="@+id/datatext"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_point_lon"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="标定经度"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/txt_point_lat"
+                android:layout_width="160dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="标定纬度"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+        <!--        单点显示区-->
+        <LinearLayout
+            android:id="@+id/order"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/selecor"
+                android:onClick="clc_Path"
+                android:text="清空"
+                android:textColor="#CC0033"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_toList"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/selecor"
+                android:text="查看"
+                android:textColor="#CC0033"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/selecor"
+                android:onClick="hidePath"
+                android:text="隐藏"
+                android:textColor="#CC0033"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:id="@+id/btn_showpath"
+                android:background="@drawable/selecor"
+                android:onClick="setPoint"
+                android:text="路径"
+                android:textColor="#CC0033"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/show_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:showText="true"
+                android:checked="true"
+                android:layout_marginLeft="15dp"
+                android:textOff="隐藏"
+                android:textOn="显示"
+                android:thumb="@drawable/setting_button_thumb"
+                android:track="@drawable/setting_button_track"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_ManyPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="left"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/poi_list"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingBottom="40dp"
+            android:scrollbarSize="4dp"
+            android:scrollbars="vertical"
+            android:visibility="gone"></androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

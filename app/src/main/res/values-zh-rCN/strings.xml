@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">水质监测</string>
+    <string name="Speed">航速：</string>
+    <string name="Heading">航向：</string>
+    <string name="setSpeed">转速：</string>
+    <string name="history">历史记录</string>
+    <string name="Latitude">纬度：</string>
+    <string name="Longitude">经度：</string>
+    <string name="open_pump">打开水泵</string>
+    <string name="close_pump">关闭水泵</string>
+    <string name="Live_picture">实况画面</string>
+    <string name="water_analysis">水质盐度</string>
+    <string name="USV_1">一号艇</string>
+    <string name="USV_2">二号艇</string>
+    <string name="USV_3">三号艇</string>
+    <string name="standard">地表水环境质量标准</string>
+    <string name="mode_Manual">手动模式</string>
+    <string name="mode_auto">定点追踪</string>
+    <string name="mode_Cruise">自主巡航</string>
+    <string name="mode_homeward">一键返航</string>
+    <string name="Samplingpoint_1">①采样点</string>
+    <string name="Samplingpoint_2">②采样点</string>
+    <string name="Samplingpoint_3">③采样点</string>
+    <string name="Samplingpoint_4">④采样点</string>
+    <string name="Samplingpoint_5">⑤采样点</string>
+    <string name="Samplingpoint_6">⑥采样点</string>
+    <string name="clear_all">清</string>
+    <string name="log_data">记</string>
+</resources>

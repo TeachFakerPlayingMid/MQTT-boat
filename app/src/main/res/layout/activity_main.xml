@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F0F0"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--        无人艇状态显示区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical">
+            <!--            第一个图标-->
+            <ImageView
+                android:layout_width="100dp"
+                android:id="@+id/image_map"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/chuanw"></ImageView>
+            <!--            数据显示-->
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_jingdu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="@string/Longitude"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/text_weidu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="@string/Latitude"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/text_hangxiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="@string/Heading"
+                    android:textSize="18sp"></TextView>
+
+                <TextView
+                    android:id="@+id/text_hangsu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.3"
+                    android:text="@string/Speed"
+                    android:textSize="18sp"></TextView>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_clc"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|top"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/selecor"
+                    android:onClick="delete"
+                    android:text="@string/clear_all"
+                    android:textColor="#CC0033"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_log"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toRightOf="@+id/btn_clc"
+                    android:background="@drawable/selecor"
+                    android:onClick="insert"
+                    android:text="@string/log_data"
+                    android:textColor="#333333"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/main_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_log"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="10dp"
+                    android:checked="true"
+                    android:showText="true"
+                    android:textOff="规划"
+                    android:textOn="目标"
+                    android:thumb="@drawable/setting_button_thumb"
+                    android:track="@drawable/setting_button_track"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <!--        时间显示区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextClock
+                android:id="@+id/textClock"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:format12Hour="yyy-MM-dd HH:mm:ss" />
+
+            <LinearLayout
+                android:id="@+id/web_GB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/web_GB1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/standard"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/web_GB2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text=" GB 3838-2002"
+                    android:textColor="#CC3333"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--        百度地图控件-->
+        <com.baidu.mapapi.map.MapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/BD_map"
+            android:visibility="gone"
+            android:clickable="true">
+        </com.baidu.mapapi.map.MapView>
+
+        <!--        控制指令区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:orientation="vertical">
+
+            <!--            第二行-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <!--                模式选择-->
+                <LinearLayout
+                    android:id="@+id/Mode_Change"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/selecor"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/image_hangxiang"
+                            android:layout_width="100dp"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/hangxiang"
+                            android:visibility="invisible" />
+
+                        <ImageView
+                            android:id="@+id/image_handle"
+                            android:layout_width="100dp"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/handle"
+                            android:visibility="visible" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/mode_Manual"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <!--                水质检测-->
+                <LinearLayout
+                    android:id="@+id/water_quality"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/selecor"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_4"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/yandu"></ImageView>
+
+                    <TextView
+                        android:id="@+id/text_yandu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/water_analysis"
+                        android:textSize="18sp"></TextView>
+
+                </LinearLayout>
+
+                <!--                水泵开关-->
+                <LinearLayout
+                    android:id="@+id/Pump_Switch"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/selecor"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/image_closepump"
+                            android:layout_width="100dp"
+                            android:layout_height="90dp"
+                            android:src="@drawable/pump"
+                            android:visibility="visible"></ImageView>
+
+                        <ImageView
+                            android:id="@+id/image_openpump"
+                            android:layout_width="100dp"
+                            android:layout_height="90dp"
+                            android:src="@drawable/openpump"
+                            android:visibility="invisible"></ImageView>
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_onoff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/open_pump"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!--            第三行-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingTop="1dp">
+
+                <!--                历史数据-->
+                <LinearLayout
+                    android:id="@+id/databases"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/selecor"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_21"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logging" />
+
+                    <TextView
+                        android:id="@+id/txt_shujv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/history"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <!--                摄像头-->
+                <LinearLayout
+                    android:id="@+id/HK"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/selecor"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_22"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ois" />
+
+                    <TextView
+                        android:id="@+id/txt_ois"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/Live_picture"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <!--                用艇选择-->
+                <LinearLayout
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="2dp"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/rg_boat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb_no1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:checked="true"
+                            android:text="@string/USV_1"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_no2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="@string/USV_2"
+                            android:textSize="18sp" />
+
+                        <RadioButton
+                            android:id="@+id/rb_no3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:text="@string/USV_3"
+                            android:textSize="18sp" />
+                    </RadioGroup>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--        调速区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_rspeed"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="@string/setSpeed"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <SeekBar
+                android:id="@+id/sb_speed"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:max="27000"
+                android:maxHeight="5.0dp"
+                android:min="10000"
+                android:minHeight="5.0dp" />
+        </LinearLayout>
+
+        <!--        定点采集/手动控制重叠区-->
+        <RelativeLayout
+            android:id="@+id/fx_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:gravity="center_vertical"
+            android:visibility="visible">
+
+            <RadioGroup
+                android:id="@+id/rg_aim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_aim1"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_1"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_aim2"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="-50dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_2"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_aim3"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="250dp"
+                    android:layout_marginTop="-41dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_3"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_aim4"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:checked="false"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_4"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_aim5"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="130dp"
+                    android:layout_marginTop="-50dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_5"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_aim6"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="250dp"
+                    android:layout_marginTop="-40dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/Samplingpoint_6"
+                    android:textSize="15sp" />
+                <RadioButton
+                    android:id="@+id/rb_homeward"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/mode_homeward"
+                    android:checked="true"
+                    android:textStyle="bold"
+                    android:textSize="20sp" />
+                <RadioButton
+                    android:id="@+id/rb_Planning"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/selecor_rb"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/mode_Cruise"
+                    android:textSize="20sp" />
+            </RadioGroup>
+
+            <FrameLayout
+                android:id="@+id/layout_whool"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                tools:context=".MainActivity">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/mmaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingMultiplier="1.3"
+                        android:textColor="#444" />
+                </ScrollView>
+
+                <com.example.mqtt_boat.joystick.CircleViewByImage
+                    android:id="@+id/joystick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"></com.example.mqtt_boat.joystick.CircleViewByImage>
+            </FrameLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

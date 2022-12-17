@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <declare-styleable name="InputNumberView">-->
+<!--        <attr name="max" format="integer" />-->
+<!--        <attr name="min" format="integer" />-->
+<!--        <attr name="step" format="integer" />-->
+<!--        <attr name="defaultValue" format="integer" />-->
+<!--        <attr name="disable" format="boolean" />-->
+<!--    </declare-styleable>-->
+
+    <!--    <declare-styleable name="WatchFaceView">-->
+    <!--        <attr name="secondColor" format="color"/>-->
+    <!--        <attr name="minColor" format="color"/>-->
+    <!--        <attr name="hourColor" format="color"/>-->
+    <!--        <attr name="scaleColor" format="color"/>-->
+    <!--        <attr name="watchFaceBackground" format="reference"/>-->
+    <!--        <attr name="scaleShow" format="boolean"/>-->
+    <declare-styleable name="PanelView">
+        <attr name="arcColor" format="color" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="android:text" />
+        <attr name="tikeCount" format="integer" />
+        <attr name="pointerColor" format="color" />
+        <attr name="android:textSize" />
+    </declare-styleable>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <declare-styleable name="CircleViewByImage">
+            <attr name="foreground" format="reference" />
+            <attr name="background" format="reference" />
+    </declare-styleable>
+
+</resources>

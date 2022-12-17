@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">USV Water Inspection </string>
+
+    <string name="Latitude">Latitude</string>
+    <string name="Longitude">Longitude</string>
+    <string name="Speed">Speed</string>
+    <string name="Heading">Heading</string>
+
+    <string name="setSpeed">setSpeed</string>
+    <string name="history">HISTORY</string>
+
+    <string name="standard">Surface water environmental quality standard</string>
+    <string name="open_pump">SAMPLE</string>
+    <string name="close_pump">Waterstop</string>
+    <string name="water_analysis">TEST</string>
+    <string name="Live_picture">LIVE</string>
+
+    <string name="USV_1">USV_1</string>
+    <string name="USV_2">USV_2</string>
+    <string name="USV_3">USV_3</string>
+
+    <string name="mode_auto">AUTO</string>
+    <string name="mode_Manual">MANUAL</string>
+    <string name="mode_Cruise">Autonomous Cruise</string>
+    <string name="mode_homeward">Autonomous Return</string>
+
+    <string name="Samplingpoint_1">①Point</string>
+    <string name="Samplingpoint_2">②Point</string>
+    <string name="Samplingpoint_3">③Point</string>
+    <string name="Samplingpoint_4">④Point</string>
+    <string name="Samplingpoint_5">⑤Point</string>
+    <string name="Samplingpoint_6">⑥Point</string>
+
+    <string name="clear_all">AC</string>
+    <string name="log_data">Log</string>
+</resources>
